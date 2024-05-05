@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://pikachuvolleyball/src/ball5.png" type="Texture" id=1]
+[ext_resource path="res://pikachuvolleyball/src/ball3png.png" type="Texture" id=2]
+[ext_resource path="res://pikachuvolleyball/src/ball4.png" type="Texture" id=3]
+[ext_resource path="res://pikachuvolleyball/src/ball1.png" type="Texture" id=4]
+[ext_resource path="res://pikachuvolleyball/src/ball2.png" type="Texture" id=5]
+[ext_resource path="res://pikachuvolleyball/assets/Ball.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 20.3961
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "rotate",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "strongattack",
+"speed": 5.0
+} ]
+
+[node name="Ball" type="StaticBody2D"]
+position = Vector2( 253, 56 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "rotate"
+frame = 4
+playing = true
